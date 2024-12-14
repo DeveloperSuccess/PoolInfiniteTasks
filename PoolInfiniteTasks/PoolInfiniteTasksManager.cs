@@ -9,7 +9,7 @@ namespace PoolInfiniteTasks
     /// <summary>
     /// Pool Infinite Tasks
     /// </summary>
-    public class PoolInfiniteTasks
+    public class PoolInfiniteTasksManager
     {
         private readonly Func<CancellationToken, Task> _taskFactory;
         private readonly int _poolCount;
@@ -28,7 +28,7 @@ namespace PoolInfiniteTasks
         /// </summary>
         /// <param name="taskFactory">A delegate with your logic to run in the task pool</param>
         /// <param name="poolCount">Task pool size</param>
-        public PoolInfiniteTasks(Func<CancellationToken, Task> taskFactory, int poolCount)
+        public PoolInfiniteTasksManager(Func<CancellationToken, Task> taskFactory, int poolCount)
         {
             _taskFactory = taskFactory;
             _poolCount = poolCount;

@@ -10,19 +10,25 @@ The solution allows you to create a pool to perform endless tasks and recreate t
 ## Usage example
 
 ```
-private Task Test(CancellationToken cancellationToken)
+using PoolInfiniteTasks;
+
+var cts = new CancellationTokenSource();
+
+cts.CancelAfter(5000);
+
+Func<CancellationToken, Task> myTaskFactory = async (cancellationToken) =>
 {
-    Func<CancellationToken, Task> myTaskFactory = async (cancellationToken) =>
+    await Task.Run(async () =>
     {
         while (!cancellationToken.IsCancellationRequested)
         {
-            /// Any of your logic
+            // Any of your logic            
             await Task.Delay(1000, cancellationToken);
+            Console.WriteLine("Success");
+            throw new Exception("test");
         }
-    };
+    }, cancellationToken);
+};
 
-    var poolInfiniteTasks = new PoolInfiniteTasks(myTaskFactory, 3);
-
-    return poolInfiniteTasks.Run(cancellationToken);
-}
+await new PoolInfiniteTasksManager(myTaskFactory, 3).Run(cts.Token);
 ```
