@@ -6,11 +6,15 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <BaseVersion>8.0.0</BaseVersion>
     <VersionPrefix>$(BaseVersion)</VersionPrefix>
-    <RepositoryUrl></RepositoryUrl>
+    <RepositoryUrl>https://github.com/DeveloperSuccess/PoolInfiniteTasks</RepositoryUrl>
     <Authors>Arthur Bogdanov</Authors>
     <Copyright>©Copyright 2024 Arthur Bogdanov. All rights reserved.</Copyright>
     <PackageTags>task;threading;thread;async;await;multithreading;multitasking;pool;background;multiple</PackageTags>
     <Description>The solution allows you to create a pool to perform endless tasks and recreate them in case of failure.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
