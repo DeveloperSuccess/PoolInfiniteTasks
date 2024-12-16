@@ -64,7 +64,7 @@ namespace PoolInfiniteTasks
                     for (int i = 0; _poolCount - _runningTasks.Count != 0; i++)
                         _runningTasks.Add(_taskFactory(cancellationToken));
 
-                await Task.WhenAny(_runningTasks);
+                await Task.WhenAny(_runningTasks).ConfigureAwait(false);
             }
         }
     }
