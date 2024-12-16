@@ -15,9 +15,9 @@ var cts = new CancellationTokenSource();
 
 cts.CancelAfter(5000);
 
-Func<CancellationToken, Task> myTaskFactory = async (cancellationToken) =>
+Func<CancellationToken, Task> myTaskFactory = (cancellationToken) =>
 {
-    await Task.Run(async () =>
+    return Task.Run(async () =>
     {
         while (!cancellationToken.IsCancellationRequested)
         {
